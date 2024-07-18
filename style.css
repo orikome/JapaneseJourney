@@ -1,0 +1,222 @@
+body {
+    background: linear-gradient(to bottom right, #121212, #251c2e);
+    color: #fff;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.dotted-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.dotted-background::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, #ffffff0e 2px, transparent 2px);
+    background-size: 40px 40px; /* Adjust size of dots */
+    pointer-events: none; /* Ensure the background doesn't interfere with content */
+}
+
+.app {
+    text-align: center;
+}
+
+.text-input-area {
+    color: #fff;
+    font-size: 2rem;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    margin: auto;
+    user-select: none;
+}
+
+.placeholder {
+    color: #757575;
+    font-style: italic;
+    animation: pulse 4s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.01);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+}
+
+#xpDisplay {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #1e1e1e79;
+    color: #ffffff98;
+    font-family: 'Noto Sans JP', sans-serif;
+    border-radius: 20px;
+    padding: 10px 20px;
+    width: 100px;
+    text-align: center;
+    z-index: 10;
+    transition: transform 0.4s ease, background-color 0.4s ease, color 0.4s ease;
+    user-select: none;
+}
+
+#xpDisplay:hover {
+    transform: scale(2);
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.card-container {
+    font-size: 80px;
+    font-weight: bold;
+    width: 400px;
+    height: 250px;
+    margin: 80px auto;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    perspective: 1400px;
+    cursor: pointer;
+  }
+  
+  .card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transform-style: preserve-3d;
+    opacity: 0;
+    transform: scale(0.85);
+    display: none;
+  }
+  
+  .front, .back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    backface-visibility: hidden;
+  }
+  
+  .front {
+    background: linear-gradient(to bottom, #446672, #446072);
+    color: #ffffff;
+  }
+
+  .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateY(180deg);
+    background: #6e4472;
+    color: #ffffff
+  }
+
+  /* ============= */
+  /* Options style */
+  /* ============= */
+
+.settings-app {
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-top: 20px;
+}
+
+.settings-group {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: rgba(18, 18, 18, 0.6);
+}
+
+.settings-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.settings-item-inner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.settings-item-left, .settings-item-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-item-label {
+    margin-right: 10px;
+}
+
+.settings-color-picker, .settings-buttons-container button {
+    background-color: #333;
+    border: 1px solid #555;
+    color: #ddd;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.settings-buttons-container button:hover, .settings-color-picker:hover {
+    background-color: #444;
+}
+
+.settings-buttons-container {
+    margin-top: 20px;
+}
+
+.settings-buttons-container button {
+    width: 150px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.fas {
+    margin-right: 5px;
+}
