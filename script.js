@@ -160,8 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-
-    function flipCardToShowAnswer() {
+    function flipCard(onComplete) {
         const card = document.querySelector(".card");
         anime({
             targets: card,
@@ -169,15 +168,17 @@ document.addEventListener('DOMContentLoaded', function() {
             rotateY: {value: '+=180', delay: 300},
             duration: 800,
             easing: 'easeInOutSine',
-            complete: function() {
-                // Maybe wait for user action to move on?
-                setTimeout(() => {
-                    prepareNextWord();
-                }, 2000);
-            }
+            complete: onComplete
+        });
+    }
+
+    function flipCardToShowAnswer() {
+        flipCard(() => {
+            setTimeout(() => {
+                prepareNextWord();
+            }, 2000);
         });
 
-        // Clear input text
         setTimeout(() => {
             const spans = textInputArea.querySelectorAll('span');
             anime({
@@ -206,27 +207,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function flipCardBackToFront() {
-        const card = document.querySelector(".card");
-        anime({
-            targets: card,
-            scale: [{value: 1}, {value: 1.2}, {value: 1, delay: 500}],
-            rotateY: {value: '+=180', delay: 300},
-            duration: 800,
-            easing: 'easeInOutSine',
-            complete: function() {
-                const nextWordData = wordsData[currentIndex];
-                const back = document.querySelector('.card .back');
-                let nextTranslationText = nextWordData.sense[0].gloss[0].text;
-                
-                // Check for parentheses in the text and split if necessary
-                nextTranslationText = nextTranslationText.replace(/ \(([^)]+)\)/, '<br>($1)');
-    
-                back.innerHTML = `<p class="kana">${nextWordData.kana[0].text}<br>${nextTranslationText}</p>`;
-        
-                playingFlipAnim = false;
-                canInput = true;
-                textInputArea.innerHTML = `<span class="placeholder">${placeholderText}</span>`;
-            }
+        flipCard(() => {
+            const nextWordData = wordsData[currentIndex];
+            const back = document.querySelector('.card .back');
+            let nextTranslationText = nextWordData.sense[0].gloss[0].text;
+            nextTranslationText = nextTranslationText.replace(/ \(([^)]+)\)/, '<br>($1)');
+            back.innerHTML = `<p class="kana">${nextWordData.kana[0].text}<br>${nextTranslationText}</p>`;
+            
+            playingFlipAnim = false;
+            canInput = true;
+            textInputArea.innerHTML = `<span class="placeholder">${placeholderText}</span>`;
         });
     }
 
