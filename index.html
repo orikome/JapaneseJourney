@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>JapaneseJourney</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="dotted-background"></div>
     <div id="app" class="app">
-        <div id="wordBox" div class="card-container">
-            <div class="card">
-              <div class="front">
-                <!-- Dynamically loaded word -->
-              </div>
-              <div class="back">
-                <!-- Correct reading -->
-              </div>
-            </div>
-          </div>          
-        <div class="input-container">
-            <div id="textInputArea" class="text-input-area">
-                <!-- User-typed characters -->
-            </div>
+      <div id="wordBox" div class="card-container">
+        <div class="card">
+          <div class="front">
+            <!-- Dynamically loaded word -->
+          </div>
+          <div class="back">
+            <!-- Correct reading -->
+          </div>
         </div>
-        <div id="xpDisplay">XP: 0</div>        
-    </div>    
+      </div>
+      <div class="input-container">
+        <div id="textInputArea" class="text-input-area">
+          <!-- User-typed characters -->
+        </div>
+      </div>
+      <div id="xpDisplay">XP: 0</div>
+    </div>
     <script src="external/anime.min.js"></script>
     <script src="external/wanakana.min.js"></script>
-    <script src="script.js"></script>
-</body>
+    <script src="script.js" type="module"></script>
+  </body>
 </html>
