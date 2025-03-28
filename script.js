@@ -18,9 +18,47 @@ document.addEventListener('DOMContentLoaded', function() {
     UIManager.initializeBackground();
 
     async function loadWords() {
-        const response = await fetch('words.json');
-        const data = await response.json();
-        wordsData = data.words;
+        const response = await fetch('words.csv');
+        const csvText = await response.text();
+        const lines = csvText.split('\n');
+        
+        // Skip header line and empty lines
+        const dataRows = lines.slice(1).filter(line => line.trim() && !line.startsWith('//'));
+        
+        // Convert CSV rows
+        wordsData = dataRows.map(row => {
+            // Split by comma (handling possible commas in the meaning field)
+            const parts = [];
+            let currentPart = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < row.length; i++) {
+                const char = row[i];
+                
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    parts.push(currentPart);
+                    currentPart = '';
+                } else {
+                    currentPart += char;
+                }
+            }
+        
+
+            parts.push(currentPart);
+            // Get the columns
+            const [expression, reading, meaning] = parts;
+            
+            // Return the word
+            return {
+                kanji: [{ text: expression }],
+                kana: [{ text: reading }],
+                sense: [{ gloss: [{ text: meaning }] }]
+            };
+        });
+        
+        // Continue with the existing functionality
         currentIndex = Math.floor(Math.random() * wordsData.length);
         UIManager.displayWord(wordsData[currentIndex]);
         animateCardEntrance();
