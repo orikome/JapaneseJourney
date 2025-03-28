@@ -1,6 +1,34 @@
+:root {
+    /* Main colors */
+    --bg-gradient-start: #121212;
+    --bg-gradient-end: #251c2e;
+    --text-color: #fff;
+    --text-color-muted: #ffffff98;
+    --placeholder-color: #757575;
+    
+    /* UI elements */
+    --xp-display-bg: #1e1e1e79;
+    --xp-display-hover-bg: #1e1e1e;
+    --settings-border: rgba(255, 255, 255, 0.2);
+    --settings-bg: rgba(0, 0, 0, 0.4);
+    --settings-group-border: rgba(255, 255, 255, 0.1);
+    --settings-group-bg: rgba(18, 18, 18, 0.6);
+    
+    /* Card colors */
+    --card-front-gradient-start: #446672;
+    --card-front-gradient-end: #446072;
+    --card-back-bg: #6e4472;
+    
+    /* Button/Interactive elements */
+    --button-bg: #333;
+    --button-border: #555;
+    --button-text: #ddd;
+    --button-hover-bg: #444;
+}
+
 body {
-    background: linear-gradient(to bottom right, #121212, #251c2e);
-    color: #fff;
+    background: linear-gradient(to bottom right, var(--bg-gradient-start), var(--bg-gradient-end));
+    color: var(--text-color);
     font-family: "Noto Sans JP", sans-serif;
     font-optical-sizing: auto;
     font-weight: bold;
@@ -59,7 +87,7 @@ body {
 }
 
 .placeholder {
-    color: #757575;
+    color: var(--placeholder-color);
     font-style: italic;
     animation: pulse 4s infinite;
 }
@@ -85,8 +113,8 @@ body {
     left: 0;
     right: 0;
     margin: auto;
-    background-color: #1e1e1e79;
-    color: #ffffff98;
+    background-color: var(--xp-display-bg);
+    color: var(--text-color-muted);
     font-family: 'Noto Sans JP', sans-serif;
     border-radius: 20px;
     padding: 10px 20px;
@@ -99,8 +127,8 @@ body {
 
 #xpDisplay:hover {
     transform: scale(2);
-    background-color: #1e1e1e;
-    color: #ffffff;
+    background-color: var(--xp-display-hover-bg);
+    color: var(--text-color);
 }
 
 .card-container {
@@ -137,8 +165,8 @@ body {
   }
   
   .front {
-    background: linear-gradient(to bottom, #446672, #446072);
-    color: #ffffff;
+    background: linear-gradient(to bottom, var(--card-front-gradient-start), var(--card-front-gradient-end));
+    color: var(--text-color);
   }
 
   .back {
@@ -146,8 +174,8 @@ body {
     top: 0;
     left: 0;
     transform: rotateY(180deg);
-    background: #6e4472;
-    color: #ffffff
+    background: var(--card-back-bg);
+    color: var(--text-color);
   }
 
   /* ============= */
@@ -156,19 +184,19 @@ body {
 
 .settings-app {
     text-align: center;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid var(--settings-border);
     padding: 20px;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: var(--settings-bg);
     margin-top: 20px;
 }
 
 .settings-group {
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--settings-group-border);
     padding: 15px;
     margin-top: 20px;
     border-radius: 8px;
-    background-color: rgba(18, 18, 18, 0.6);
+    background-color: var(--settings-group-bg);
 }
 
 .settings-item {
@@ -195,16 +223,16 @@ body {
 }
 
 .settings-color-picker, .settings-buttons-container button {
-    background-color: #333;
-    border: 1px solid #555;
-    color: #ddd;
+    background-color: var(--button-bg);
+    border: 1px solid var(--button-border);
+    color: var(--button-text);
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .settings-buttons-container button:hover, .settings-color-picker:hover {
-    background-color: #444;
+    background-color: var(--button-hover-bg);
 }
 
 .settings-buttons-container {
